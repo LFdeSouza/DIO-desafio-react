@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.ad5a0cb4.css",
-    "main.js": "/static/js/main.a6fc4465.js",
-    "index.html": "/index.html",
-    "main.ad5a0cb4.css.map": "/static/css/main.ad5a0cb4.css.map",
-    "main.a6fc4465.js.map": "/static/js/main.a6fc4465.js.map"
+    "main.css": "/DIO-desafio-react/static/css/main.ad5a0cb4.css",
+    "main.js": "/DIO-desafio-react/static/js/main.a6fc4465.js",
+    "index.html": "/DIO-desafio-react/index.html",
+    "main.ad5a0cb4.css.map": "/DIO-desafio-react/static/css/main.ad5a0cb4.css.map",
+    "main.a6fc4465.js.map": "/DIO-desafio-react/static/js/main.a6fc4465.js.map"
   },
   "entrypoints": [
     "static/css/main.ad5a0cb4.css",
