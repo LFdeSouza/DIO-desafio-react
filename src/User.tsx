@@ -1,9 +1,13 @@
 import { GithubUserInterface, GithubRepoInterface } from "./Types";
 
+export interface RepoInterface {
+  name: string | null;
+  url: string;
+}
 export class User {
   id?: number;
   login?: string;
-  avatar?: string | null;
+  avatar?: string;
   name?: string;
   html_url?: string | null;
   blog?: string | null;
@@ -13,8 +17,8 @@ export class User {
   following?: number;
   public_gists?: number;
   public_repos?: number;
-  repos?: GithubRepoInterface[];
-  starred?: GithubRepoInterface[];
+  repos?: RepoInterface[];
+  starred?: RepoInterface[];
 
   constructor(
     private data?: GithubUserInterface,
@@ -36,10 +40,18 @@ export class User {
       this.public_repos = data.public_repos;
     }
     if (repositories) {
-      this.repos = repositories;
+      const repos = repositories.map((repo) => ({
+        name: repo.name,
+        url: repo.html_url,
+      }));
+      this.repos = repos;
     }
     if (userStarred) {
-      this.starred = userStarred;
+      const starred = userStarred.map((repo) => ({
+        name: repo.name,
+        url: repo.html_url,
+      }));
+      this.starred = starred;
     }
   }
 }

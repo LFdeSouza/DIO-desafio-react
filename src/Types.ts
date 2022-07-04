@@ -4,11 +4,6 @@ export type Props = {
   children: React.ReactNode;
 };
 
-export enum Theme {
-  light = 0,
-  dark = 1,
-}
-
 export interface GithubUserInterface {
   login: string;
   id: number;
@@ -81,7 +76,7 @@ export interface GithubRepoInterface {
   has_wiki: boolean;
   homepage: string | null;
   hooks_url: string | null;
-  html_url: string | null;
+  html_url: string;
   id: number;
   is_template: boolean;
   issue_comment_url: string | null;
@@ -101,7 +96,7 @@ export interface GithubRepoInterface {
   merges_url: string | null;
   milestones_url: string | null;
   mirror_url: null;
-  name: string | null;
+  name: string;
   node_id: string | null;
   notifications_url: string | null;
   open_issues: number;
@@ -124,7 +119,7 @@ export interface GithubRepoInterface {
   topics: any[];
   trees_url: string | null;
   updated_at: string | null;
-  url: string | null;
+  url: string;
   visibility: string | null;
   watchers: number;
   watchers_count: number;

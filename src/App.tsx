@@ -1,7 +1,10 @@
 import { useState } from "react";
-import { ThemeProvider } from "./providers/ThemeProvider";
 import { GithubApi } from "./services/GithubApi";
 import { User } from "./User";
+import Form from "./components/query/Form";
+import Profile from "./components/query/Profile";
+import Header from "./components/shared/Header";
+import Spinner from "./components/shared/Spinner";
 
 interface UserData {
   loading: boolean;
@@ -9,13 +12,14 @@ interface UserData {
 }
 
 export const App = () => {
-  const [query, setQuery] = useState("");
-  const [userData, setUserData] = useState<any>({
+  const [userData, setUserData] = useState<UserData>({
     loading: false,
     user: null,
   });
 
-  const getUser = async () => {
+  console.log(userData);
+
+  const getUser = async (query: string) => {
     setUserData({ ...userData, loading: true });
 
     const userProfile = await GithubApi.getUsers(query);
@@ -26,13 +30,13 @@ export const App = () => {
     setUserData({ ...userData, loading: false, user: newUser });
   };
 
-  console.log(userData);
   return (
-    <ThemeProvider>
-      <div className="dark">
-        <div className=" min-w-screen mx-auto min-h-screen dark:bg-gray-700"></div>
-      </div>
-    </ThemeProvider>
+    <div className="font-sans">
+      <Header />
+      <Form getUser={getUser} />
+      {userData.loading && <Spinner />}
+      {userData && <Profile user={userData.user} />}
+    </div>
   );
 };
 
